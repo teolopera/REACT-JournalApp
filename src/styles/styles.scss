@@ -1,0 +1,9 @@
+// Importamos el partial - Este tiene que ser el primer archivo por que 
+// son las configuraciones
+@import './base/settings';
+
+// Importamos base
+@import './base/base';
+
+@import './components/auth';
+@import './components/buttons';
