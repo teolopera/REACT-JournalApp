@@ -1,0 +1,29 @@
+********* SASS *********
+https://sass-lang.com/documentation
+npm i node-sass
+
+********* REACT ROUTER DOM *********
+https://reactrouter.com/web/guides/quick-start
+npm install react-router-dom
+
+********* REACT REDUX *********
+-> Configurar redux para que sirva en el navegador
+https://github.com/zalmoxisus/redux-devtools-extension
+-> Este nos ayudara a realizar la instalacion con redux y nos brinda hooks 
+https://react-redux.js.org/introduction/quick-start
+https://es.redux.js.org/
+-> Instalamos react-redux y el redux de una vez
+npm install react-redux redux
+
+********* CONFIGURACION DE FIREBASE *********
+https://www.youtube.com/playlist?list=PLCKuOXG0bPi29EkcAuVCln9ISbExcQk66
+npm i firebase
+1. Activamos la autenticacion por correo y por google en firebase
+2. Implementamos el middleware que se encargue de hacer la tarea asincrona
+https://www.npmjs.com/package/redux-thunk
+-> Thunk es un middleware encargado de hacer esa parte
+npm install --save redux-thunk
+
+********* LIBRERIA PARA VALIDACIONES DE FORMULARIO *********
+https://www.npmjs.com/package/validator
+npm i validator
