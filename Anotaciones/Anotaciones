@@ -27,3 +27,7 @@ npm install --save redux-thunk
 ********* LIBRERIA PARA VALIDACIONES DE FORMULARIO *********
 https://www.npmjs.com/package/validator
 npm i validator
+
+********* LIBRERIA PARA MENSAJES ANIMADOS *********
+https://sweetalert2.github.io/
+npm install sweetalert2

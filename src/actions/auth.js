@@ -1,16 +1,57 @@
 /* AQUI PONEMOS LAS ACCIONES, QUE NO SON MAS QUE FUNCIONES */
 
+import Swal from 'sweetalert2'
+
 import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
 import { types } from '../types/types';
+import { startLoading, finishLoading } from './ui';
 
 /* PRIMERA ACCION ASINCRONA */
 export const startLoginEmailPassword = (email, password) => {
+
     return (dispatch) => {
 
-        setTimeout(() => {
-            dispatch( login(123, 'pedro') )
-        }, 3500);
+        dispatch( startLoading() );
 
+        firebase.auth().signInWithEmailAndPassword( email, password )
+            .then(({ user }) => {
+
+                dispatch( login(user.uid, user.displayName) );
+                dispatch( finishLoading() );
+
+            })
+            .catch( err => {
+                
+                dispatch( finishLoading() );
+
+                /* AQUI UTILIZAMOS EL SWEET ALERT PARA MOSTRAR EL ERROR */
+                Swal.fire('Error', err.message, 'error')
+
+            })
+
+    }
+}
+
+export const startRegisterWithEmailPasswordName = (email, password, name) => {
+    /* COMO ESTO ES UNA TAREA ASINCRONA, NECESITAMOS RETORNAR UN CALLBACK */
+    /* EN EL MOMENTO EN QUE YA TENGA MI USUARIO EN FIREBASE AHI ES DONDE REALIZARE EL DISPATCH */
+    return ( dispatch ) => {
+        firebase.auth().createUserWithEmailAndPassword( email, password )
+            .then(async({ user } ) => {
+
+                /* ESTA FUNCION ME PERMITE ACTUALIZAR VALORES EN FIREBASE, COMO EL DISPLAYNAME */
+                /* YA QUE ESTE CON UN LOGIN NORMAL NO VENDRIA IMPLEMENTADO */
+                await user.updateProfile( {displayName: name });
+
+                // console.log(user)
+                dispatch(
+                    login( user.uid, user.displayName )
+                )
+
+            })
+            .catch( err => {
+                Swal.fire('Error', err.message, 'error')
+            })
     }
 }
 
@@ -34,4 +75,18 @@ export const login = (uid, displayName) => ({
             uid, 
             displayName
         }
+})
+
+export const startLogout = () => {
+    /* COMO ES UN PROCESO ASINCRONO RETORNAMOS UN CALLBACK */
+    return async( dispatch ) => {
+
+        await firebase.auth().signOut();
+
+        dispatch( logout() );
+    }
+}
+
+export const logout = () => ({
+    type: types.logout
 })
