@@ -33,6 +33,16 @@
 
 }
 
+.btn-danger {
+    background-color: $dark-orange;
+    font-size: 15px;
+    transition: background-color .3s ease;
+
+    &:hover {
+        background-color: darken($color: $dark-orange, $amount: 10);
+    }
+}
+
 .btn-block {
     width: 100%;
 }

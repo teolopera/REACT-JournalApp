@@ -36,3 +36,9 @@ npm install sweetalert2
 ********* MOMENT JS - LIBRERIA PARA FECHAS *********
 https://momentjs.com/
 npm install moment --save
+
+********* CLOUDINARY - BACKEND PARA SUBIR IMAGENES *********
+https://cloudinary.com
+
+********* ANIMATE - ANIMACIONES PARA LA PAGINA *********
+https://animate.style/
