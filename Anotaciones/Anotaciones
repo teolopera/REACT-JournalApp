@@ -23,6 +23,7 @@ npm i firebase
 https://www.npmjs.com/package/redux-thunk
 -> Thunk es un middleware encargado de hacer esa parte
 npm install --save redux-thunk
+3. Creamos la base de datos con Cloud Firestore
 
 ********* LIBRERIA PARA VALIDACIONES DE FORMULARIO *********
 https://www.npmjs.com/package/validator
@@ -31,3 +32,7 @@ npm i validator
 ********* LIBRERIA PARA MENSAJES ANIMADOS *********
 https://sweetalert2.github.io/
 npm install sweetalert2
+
+********* MOMENT JS - LIBRERIA PARA FECHAS *********
+https://momentjs.com/
+npm install moment --save

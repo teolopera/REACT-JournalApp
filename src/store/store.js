@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 
 import { authReducer } from '../reducers/authReducer';
 import { uiReducer } from '../reducers/uiReducer';
+import { notesReducer } from '../reducers/notesReducer';
 
 /* ESTA CONSTANTE HABILITA LAS EXTENSIONES DEL DEVTOOLS Y PERMITE ENVIAR MIDDLEWARES */
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
@@ -12,7 +13,8 @@ const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOO
 /* UTILIZAMOS COMBINEREDUCERS PARA PERMITIRLE AL STORE RECIBIR VARIOS REDUCERS EN VEZ DE UNO SOLO */
 const reducers = combineReducers({
     auth: authReducer,
-    ui: uiReducer
+    ui: uiReducer,
+    notes: notesReducer
 });
 
 /* EL STORE RECIBE UN REDUCER LE MANDAMOS EL OBJETO CON LOS REDUCERS */

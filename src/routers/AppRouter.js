@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
 
@@ -22,12 +23,15 @@ export const AppRouter = () => {
     useEffect(() => {
 
         /* ESTO RETORNA UN OBSERVABLE QUE SE VA A DISPARAR EN CADA CAMBIO */
-        firebase.auth().onAuthStateChanged( (user) => {
+        firebase.auth().onAuthStateChanged( async (user) => {
             
             /* SI EL OBJETO USER TIENE ALGO, ENTONCES PREGUNTA SI EXISTE LA PROPIEDAD UID */
             if ( user?.uid) {
                 dispatch( login( user.uid, user.displayName) );
                 setIsLoggedIn( true );
+
+                dispatch( startLoadingNotes( user.uid ));
+
             } else {
                 setIsLoggedIn( false );
             }
